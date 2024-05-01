@@ -1,0 +1,23 @@
+<style>
+  .auth-center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  .auth-center a{
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+</style>
+
+<div class="auth-center">
+  <%= if (current_user) { %>
+    <h1><%= current_user.Email %></h1>
+    <%= linkTo(signoutPath(), {data-method: "DELETE"}){ %>Sign Out<% } %>
+  <% } else { %>
+    <%= linkTo(signinPath()){ %>Sign In<% } %>
+    <%= linkTo(newUsersPath()){ %>Register<% } %>
+  <% } %>
+</div>
+
