@@ -67,6 +67,25 @@ func App() *buffalo.App {
 
 		app.GET("/", HomeHandler)
 
+		// NOTE: this block should go before any resources
+		// that need to be protected by buffalo-goth!
+		//AuthMiddlewares
+		app.Use(SetCurrentUser)
+		app.Use(Authorize)
+
+		//Routes for Auth
+		app.GET("/auth", AuthLanding)
+		app.GET("/signin", AuthNew)
+		app.POST("/signin", AuthCreate)
+		app.DELETE("/signout", AuthDestroy)
+		app.Middleware.Skip(Authorize, HomeHandler, AuthLanding, AuthNew, AuthCreate)
+
+		//Routes for User registration
+		users := app.Group("/users")
+		users.GET("/new", UsersNew)
+		users.POST("/", UsersCreate)
+		users.Middleware.Remove(Authorize)
+
 		app.ServeFiles("/", http.FS(public.FS())) // serve files from the public directory
 	})
 
