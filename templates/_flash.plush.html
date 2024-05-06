@@ -1,4 +1,11 @@
-<div class="row">
+<style>
+  .buffalo-flash {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+</style>
+
+<div class="row buffalo-flash">
   <div class="col-md-12">
     <%= for (k, messages) in flash { %>
       <%= for (msg) in messages { %>
