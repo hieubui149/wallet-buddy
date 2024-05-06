@@ -1,6 +1,6 @@
-# Welcome to Buffalo
+# wallet-buddy
 
-Thank you for choosing Buffalo for your web development needs.
+Your trusted companion for managing all your financial assets in one place
 
 ## Database Setup
 
