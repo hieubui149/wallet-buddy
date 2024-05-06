@@ -1,0 +1,72 @@
+<style>
+  .table-wrapper {
+    max-width: 600px;
+  }
+  .table-wrapper h1, h2{
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+  .table-wrapper h2{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.175);
+  }
+
+  .grid-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 0.5rem;
+  }
+  .card:hover {
+    background-color: #a6e9d5;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  .card-container {
+    max-width: 18rem;
+    max-width: 18rem;
+  }
+  .card .card-button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+</style>
+
+<div class="table-wrapper">
+  <h2><%= user.FirstName %>'s wallets</h2>
+  <div class="grid-wrapper">
+    <%= for (idx, w) in user.Wallets { %>
+      <div class="card card-container text-center">
+        <div class="card-body">
+          <h4 class="card-title"><%= w.Name %></h4>
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <div class="card-button-container">
+            <button class="btn btn-primary btn-sm disabled" aria-disabled="true">Visit</button>
+            <%= form({action: usersMeWalletPath({ wallet_id: w.ID }), method: "DELETE"}) { %>
+              <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    <% } %>
+  </div>
+
+  <h2>Available wallets</h2>
+  <div class="grid-wrapper">
+    <%= for (idx, w) in all_wallets { %>
+      <div class="card card-container text-center">
+        <div class="card-body">
+          <h4 class="card-title"><%= w.Name %> Wallet</h4>
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <%= if (isWalletInUse(w.ID)) { %>
+            <a class="btn btn-success btn-sm disabled" role="button" aria-disabled="true">Add</a>
+          <% } else { %>
+            <%= form({action: usersMeWalletPath({ wallet_id: w.ID }), method: "POST"}) { %>
+              <button class="btn btn-success btn-sm" type="submit">Add</button>
+            <% } %>
+          <% } %>
+        </div>
+      </div>
+    <% } %>
+  </div>
+</div>

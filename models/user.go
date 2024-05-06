@@ -28,6 +28,9 @@ type User struct {
 	FirstName string `json:"first_name" db:"first_name"`
 	LastName  string `json:"last_name" db:"last_name"`
 	Status    string `json:"status" db:"status"`
+
+	// Associations
+	Wallets Wallets `many_to_many:"users_wallets" db:"-"`
 }
 
 // Create wraps up the pattern of encrypting the password and

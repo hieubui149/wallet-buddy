@@ -50,6 +50,35 @@ CREATE TABLE public.users (
 ALTER TABLE public.users OWNER TO postgres;
 
 --
+-- Name: users_wallets; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.users_wallets (
+    id uuid NOT NULL,
+    user_id uuid NOT NULL,
+    wallet_id uuid NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.users_wallets OWNER TO postgres;
+
+--
+-- Name: wallets; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.wallets (
+    id uuid NOT NULL,
+    name character varying(255) NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.wallets OWNER TO postgres;
+
+--
 -- Name: schema_migration schema_migration_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -66,10 +95,49 @@ ALTER TABLE ONLY public.users
 
 
 --
+-- Name: users_wallets users_wallets_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users_wallets
+    ADD CONSTRAINT users_wallets_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: wallets wallets_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.wallets
+    ADD CONSTRAINT wallets_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: schema_migration_version_idx; Type: INDEX; Schema: public; Owner: postgres
 --
 
 CREATE UNIQUE INDEX schema_migration_version_idx ON public.schema_migration USING btree (version);
+
+
+--
+-- Name: wallets_name_idx; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE UNIQUE INDEX wallets_name_idx ON public.wallets USING btree (name);
+
+
+--
+-- Name: users_wallets users_wallets_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users_wallets
+    ADD CONSTRAINT users_wallets_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users(id);
+
+
+--
+-- Name: users_wallets users_wallets_wallet_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users_wallets
+    ADD CONSTRAINT users_wallets_wallet_id_fkey FOREIGN KEY (wallet_id) REFERENCES public.wallets(id);
 
 
 --

@@ -84,6 +84,9 @@ func App() *buffalo.App {
 		users := app.Group("/users")
 		users.GET("/new", UsersNew)
 		users.POST("/", UsersCreate)
+		users.GET("/me/wallets", MyWallets)
+		users.POST("/me/wallets/{wallet_id}", UserWalletsCreate)
+		users.DELETE("/me/wallets/{wallet_id}", UserWalletsDelete)
 		users.Middleware.Remove(Authorize)
 
 		app.ServeFiles("/", http.FS(public.FS())) // serve files from the public directory
