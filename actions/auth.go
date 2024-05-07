@@ -11,7 +11,7 @@ import (
 	"github.com/pkg/errors"
 	"golang.org/x/crypto/bcrypt"
 
-	"your_finance/models"
+	"wallet-buddy/models"
 )
 
 // AuthLanding shows a landing page to login
@@ -62,7 +62,7 @@ func AuthCreate(c buffalo.Context) error {
 		return bad()
 	}
 	c.Session().Set("current_user_id", u.ID)
-	c.Flash().Add("success", "Welcome Back to Your Finance!")
+	c.Flash().Add("success", "Welcome Back to Wallet Buddy!")
 
 	redirectURL := "/"
 	if redir, ok := c.Session().Get("redirectURL").(string); ok && redir != "" {

@@ -4,9 +4,9 @@ import (
 	"net/http"
 	"sync"
 
-	"your_finance/locales"
-	"your_finance/models"
-	"your_finance/public"
+	"wallet-buddy/locales"
+	"wallet-buddy/models"
+	"wallet-buddy/public"
 
 	"github.com/gobuffalo/buffalo"
 	"github.com/gobuffalo/buffalo-pop/v3/pop/popmw"
@@ -45,7 +45,7 @@ func App() *buffalo.App {
 	appOnce.Do(func() {
 		app = buffalo.New(buffalo.Options{
 			Env:         ENV,
-			SessionName: "_your_finance_session",
+			SessionName: "_wallet_buddy_session",
 		})
 
 		// Automatically redirect to SSL

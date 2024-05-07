@@ -1,7 +1,7 @@
 package grifts
 
 import (
-	"your_finance/actions"
+	"wallet-buddy/actions"
 
 	"github.com/gobuffalo/buffalo"
 )

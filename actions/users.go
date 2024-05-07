@@ -7,7 +7,7 @@ import (
 	"github.com/gobuffalo/pop/v6"
 	"github.com/pkg/errors"
 
-	"your_finance/models"
+	"wallet-buddy/models"
 )
 
 // UsersNew renders the users form
@@ -37,7 +37,7 @@ func UsersCreate(c buffalo.Context) error {
 	}
 
 	c.Session().Set("current_user_id", u.ID)
-	c.Flash().Add("success", "Welcome to your-finance!")
+	c.Flash().Add("success", "Welcome to wallet buddy!")
 
 	return c.Redirect(http.StatusFound, "/")
 }
