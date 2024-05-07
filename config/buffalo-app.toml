@@ -1,5 +1,5 @@
-name = "your-finance"
-bin = "bin/your-finance"
+name = "wallet-buddy"
+bin = "bin/wallet-buddy"
 vcs = "git"
 with_pop = true
 with_sqlite = false

@@ -2,7 +2,7 @@ package actions
 
 import (
 	"net/http"
-	"your_finance/models"
+	"wallet-buddy/models"
 
 	"github.com/gobuffalo/buffalo"
 	"github.com/gobuffalo/pop/v6"

@@ -2,8 +2,7 @@ package main
 
 import (
 	"log"
-
-	"your_finance/actions"
+	"wallet-buddy/actions"
 )
 
 // main is the starting point for your Buffalo application.

@@ -1,8 +1,8 @@
 package actions
 
 import (
-	"your_finance/public"
-	"your_finance/templates"
+	"wallet-buddy/public"
+	"wallet-buddy/templates"
 
 	"github.com/gobuffalo/buffalo/render"
 )

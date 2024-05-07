@@ -3,7 +3,7 @@ package actions
 import (
 	"net/http"
 
-	"your_finance/models"
+	"wallet-buddy/models"
 )
 
 func (as *ActionSuite) Test_Users_New() {

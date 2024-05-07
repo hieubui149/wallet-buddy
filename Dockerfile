@@ -4,8 +4,8 @@ FROM gobuffalo/buffalo:v0.18.14 as builder
 
 ENV GOPROXY http://proxy.golang.org
 
-RUN mkdir -p /src/your_finance
-WORKDIR /src/your_finance
+RUN mkdir -p /src/wallet-buddy
+WORKDIR /src/wallet-buddy
 
 # this will cache the npm install step, unless package.json changes
 ADD package.json .

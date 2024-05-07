@@ -1,4 +1,4 @@
-module your_finance
+module wallet-buddy
 
 go 1.22.2
 
